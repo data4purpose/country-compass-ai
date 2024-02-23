@@ -2,7 +2,7 @@ from typing import Optional
 
 import requests
 from langchain.tools import tool
-from pydantic.v1 import BaseModel, Field, conlist
+#from pydantic.v1 import BaseModel, Field, conlist
 from requests import PreparedRequest
 
 
@@ -13,8 +13,7 @@ def prepare_and_log_request(base_url: str, params: Optional[dict] = None) -> Pre
     print(f'\033[92mCalling API: {req.url}\033[0m')
     return req
 
-
-# from pydantic import BaseModel, Field, conlist
+from pydantic import BaseModel, Field, conlist
 
 
 class Params(BaseModel):

@@ -1,4 +1,20 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # pylint: disable=line-too-long
+
+import pydantic
+print(pydantic.__version__)
+
+print( "# imports ... (1)")
+
+import sys
+sys.path.insert(0,'.')
+
+print( "# imports ... (2)")
+
+import os
+import json
+import traceback
 
 import re
 
@@ -6,10 +22,13 @@ import streamlit as st
 from dotenv import load_dotenv
 from PIL import Image
 
-from agents.conversational_agent import create_agent
+print( "# imports ... (3)")
+
+import agents.conversational_agent as agents
 
 load_dotenv('.env')
 
+print( "# imports ... [DONE]")
 
 def display_header_and_image():
     """
@@ -54,7 +73,7 @@ def main():
     initialize_session()
 
     if 'agent' not in st.session_state:
-        st.session_state.agent = create_agent()
+        st.session_state.agent = agents.create_agent()
     # container for chat history
     chat_container = st.container()
 
